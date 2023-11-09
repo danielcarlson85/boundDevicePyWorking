@@ -17,8 +17,6 @@ def checkForDeviceMovements():
     utils.sendDebugTextToTablet("CheckForDeviceMovements method started")
     utils.show0()
     
-    totalSecUntilRestartEcersise=0
-    
     if start.UserData.data == None:
         utils.createNewUserDataObject()
 
@@ -26,10 +24,10 @@ def checkForDeviceMovements():
         acceleration = sense.get_accelerometer_raw()
         accelerator_value = acceleration['z'] - 1.0
         short_accelerator_value = float(str(accelerator_value)[:5])
-        totalSecUntilRestartEcersise += 1
-        print(totalSecUntilRestartEcersise)
+        start.UserData.totalSecUntilRestartEcersise += 1
         
-        if totalSecUntilRestartEcersise == 5000:    
+        if start.UserData.totalSecUntilRestartEcersise == 3000:    
+            start.UserData.totalSecUntilRestartEcersise=0
             utils.restart_bound_script()
         
         if short_accelerator_value >0.4:
