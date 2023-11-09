@@ -73,14 +73,12 @@ def startExercise():
             
         if start.UserData.reps >-1:
             start.UserData.data['TrainingData'].append({'X': start.UserData.totalReps, 'Y': start.UserData.weight, 'Z': int(time.time())})
-          
+            
         short_accelerator_value = float(str(accelerator_value)[:5])
-     
 
         lowerLimit = -0.07
         upperLimit = -0.02
-
-     
+        
         if lowerLimit <= short_accelerator_value <= upperLimit:
             start.UserData.totalPause = start.UserData.totalPause +1
             print("Checking pause")

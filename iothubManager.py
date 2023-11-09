@@ -6,19 +6,11 @@ import time
 import sys
 
 class Program:
-
-    method_request = {}
-
     def on_message_received(message):
         message = message.data.decode("utf-8")
         print("Incomming message: " +message)
         utils.sendDebugTextToTablet("Incomming message: " +message)
-                
-                
         result = message.split("****")
-        
-        
-        #print(result)
         
         if result[0] == "login":
             print("User is logged in")
@@ -43,7 +35,6 @@ class Program:
 
     @staticmethod
     def send_data_to_iothub(data_to_send):
-        global method_request
         print("Sending data to IoTHub...")
         utils.sendDebugTextToTablet("Sending data to IoTHub...")
         start.UserData.startExcersice = True
@@ -66,4 +57,3 @@ class Program:
         Program.client.on_message_received = Program.on_message_received
         Program.client.connect()
         utils.sendDebugTextToTablet("Device is up and running")
-
