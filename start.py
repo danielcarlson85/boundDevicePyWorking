@@ -78,6 +78,8 @@ class UserData:
     isFirstTimeStarted=True
     exception=""
     isDebug=True
+    totalSecUntilRestartEcersise = 0
+
     
 if __name__ == "__main__":
     BoundUI=tk.Tk()    

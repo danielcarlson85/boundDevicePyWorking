@@ -16,7 +16,9 @@ def stopped(accelerator_value):
 def checkForDeviceMovements():
     utils.sendDebugTextToTablet("CheckForDeviceMovements method started")
     utils.show0()
-
+    
+    totalSecUntilRestartEcersise=0
+    
     if start.UserData.data == None:
         utils.createNewUserDataObject()
 
@@ -24,6 +26,11 @@ def checkForDeviceMovements():
         acceleration = sense.get_accelerometer_raw()
         accelerator_value = acceleration['z'] - 1.0
         short_accelerator_value = float(str(accelerator_value)[:5])
+        totalSecUntilRestartEcersise += 1
+        print(totalSecUntilRestartEcersise)
+        
+        if totalSecUntilRestartEcersise == 5000:    
+            utils.restart_bound_script()
         
         if short_accelerator_value >0.4:
             start.UserData.startExcersice=True
@@ -42,7 +49,6 @@ def startExercise():
         accelerator_value = acceleration['z'] - 1.0
         
         if start.UserData.reps >= 0 and start.UserData.reps < 10:
-            print("")
             utils.showLetter(start.UserData.reps)
         if start.UserData.moving:
             if stopped(accelerator_value):
@@ -72,7 +78,6 @@ def startExercise():
           
         short_accelerator_value = float(str(accelerator_value)[:5])
      
-        print(short_accelerator_value)
 
         lowerLimit = -0.07
         upperLimit = -0.02
@@ -81,6 +86,7 @@ def startExercise():
         if lowerLimit <= short_accelerator_value <= upperLimit:
             start.UserData.totalPause = start.UserData.totalPause +1
             print("Checking pause")
+            print(short_accelerator_value)
             if start.UserData.totalPause == 100:
                 start.UserData.totalPause = 0
                 training_data = json.dumps(utils.replace_empty_with_string(start.UserData.data))
