@@ -53,6 +53,8 @@ import random
 import utils
 import iothubManager
 import tkinter as tk
+import threading
+import time
 
 class UserData:
     delaytime = 20
@@ -80,26 +82,23 @@ class UserData:
     isDebug=True
     totalSecUntilRestartEcersise = 0
 
-    
-if __name__ == "__main__":
-    BoundUI=tk.Tk()    
 
+if __name__ == "__main__":    
+    BoundUI=tk.Tk()
+
+
+    conn_str = open("/home/pi/Desktop/BoundDevicePySplit/connectionstring","r").readline()
     try:
         utils.setGreenDot()
         utils.sendDebugTextToTablet("Starting up device")
         BoundUI.title("Bound Device")
         print("Device started")
-        conn_str = open("/home/pi/Desktop/BoundDevicePySplit/connectionstring","r").readline()
         iothubManager.Program.setup(conn_str)
         BoundUI.mainloop()
         input("Press Enter to exit...")
 
     except Exception as e:
-               
-        exception =str(e)
         utils.setRedDot()
-        print(exception)
-        utils.sendDebugTextToTablet("EXEPTION: "+ exception)
-        
-        iothubManager.Program.setup(conn_str)
-        BoundUI.mainloop()
+        exception = str(e)
+        utils.logToFile(exception)
+        utils.restart_device()

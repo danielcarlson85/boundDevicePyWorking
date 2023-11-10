@@ -6,9 +6,12 @@ import sys
 import requests
 import subprocess
 import time
-
+import platform
+from datetime import datetime
 
 sense = SenseHat()
+now = datetime.now()
+
 
 def setRedColor():
     sense.clear()
@@ -50,11 +53,13 @@ def setRedDot():
     sense.clear()
     sense.set_pixel(0, 7, 255, 0, 1)
     
-
-def restart_bound_script():
-    sendDebugTextToTablet("Restarting device...")
+def restart_device():
     python = sys.executable
     os.execl(python, python, *sys.argv)
+
+def restart_bound_script_with_logging():
+    sendDebugTextToTablet("Restarting device...")
+    restart_device()
     
     
 def restartRPI():
@@ -103,13 +108,24 @@ def createNewUserDataObject():
     start.UserData.data["TrainingData"] = []
 
 
-def sendException(exception):
+def logToFile(text):
     
-    requests.get(f"https://boundhub.azurewebsites.net/send?debugText={exception}")
+    with open("log.txt", "a") as file:
+        file.write(f"{now}:   {text}\n")
 
+def checkConnectionToBoundHub():
+    
+    try:
+        subprocess.check_call(["ping","-c","1", "https://boundhub.azurewebsites.net"], stdout = subprocess.PIPE, stderr=subprocess.PIPE)
+    except Exception as e:
+        print("No internet connection")
+        logToFile("No internet connection, restarting RPI")
+        restartRPI()
 
 def sendTextToTablet(text):
     
+    logToFile(f"sendTextToTablet method started {text}")
+
     requests.get(f"https://boundhub.azurewebsites.net/send?name={text}")
 
 def sendDebugTextToTablet(text):
@@ -119,5 +135,8 @@ def sendDebugTextToTablet(text):
     status = start.UserData.status
     reps = start.UserData.totalReps
     weight = start.UserData.weight
-
+    print(f"{text}")
+    
+    logToFile(f"sendDebugTextToTablet method started {text}")
+    
     requests.get(f"https://boundhub.azurewebsites.net/send?name={email}&reps={reps}&machinename={machinename}&weight={weight}&status=online&debugText={text}")

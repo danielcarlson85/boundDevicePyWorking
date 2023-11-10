@@ -25,7 +25,7 @@ class Program:
 
         elif result[0] == "restartDevice":
                 print("Restarting device...")
-                utils.restart_bound_script()
+                utils.restart_bound_script_with_logging()
 
         elif result[0] == "start":
                 utils.sendDebugTextToTablet("Startng excersise")
