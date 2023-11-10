@@ -114,13 +114,8 @@ def logToFile(text):
         file.write(f"{now}:   {text}\n")
 
 def checkConnectionToBoundHub():
-    
-    try:
-        subprocess.check_call(["ping","-c","1", "https://boundhub.azurewebsites.net"], stdout = subprocess.PIPE, stderr=subprocess.PIPE)
-    except Exception as e:
-        print("No internet connection")
-        logToFile("No internet connection, restarting RPI")
-        restartRPI()
+
+    requests.get(f"https://boundhub.azurewebsites.net")
 
 def sendTextToTablet(text):
     

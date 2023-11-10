@@ -54,7 +54,6 @@ import utils
 import iothubManager
 import tkinter as tk
 import threading
-import time
 
 class UserData:
     delaytime = 20
@@ -82,11 +81,17 @@ class UserData:
     isDebug=True
     totalSecUntilRestartEcersise = 0
 
-
 if __name__ == "__main__":    
+    
+    try:
+        utils.checkConnectionToBoundHub()
+    except Exception as e:
+        utils.setRedDot()
+        print("No connection to Bound hub found...")
+        utils.logToFile(str(e))
+        utils.restart_device()
+    
     BoundUI=tk.Tk()
-
-
     conn_str = open("/home/pi/Desktop/BoundDevicePySplit/connectionstring","r").readline()
     try:
         utils.setGreenDot()
