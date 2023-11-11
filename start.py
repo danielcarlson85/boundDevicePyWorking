@@ -87,7 +87,7 @@ if __name__ == "__main__":
         utils.checkConnectionToBoundHub()
     except Exception as e:
         utils.setRedDot()
-        print("No connection to Bound hub found...")
+        print("No internet connection...")
         utils.logToFile(str(e))
         utils.restart_device()
     
