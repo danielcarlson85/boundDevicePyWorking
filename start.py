@@ -79,7 +79,7 @@ class UserData:
     isFirstTimeStarted=True
     exception=""
     isDebug=True
-    totalSecUntilRestartEcersise = 0
+    totalSecUntilRestartExcersise = 0
 
 if __name__ == "__main__":    
     

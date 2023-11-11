@@ -24,11 +24,11 @@ def checkForDeviceMovements():
         acceleration = sense.get_accelerometer_raw()
         accelerator_value = acceleration['z'] - 1.0
         short_accelerator_value = float(str(accelerator_value)[:5])
-        start.UserData.totalSecUntilRestartEcersise += 1
+        start.UserData.totalSecUntilRestartExcersise += 1
         
-        if start.UserData.totalSecUntilRestartEcersise == 3000:    
-            start.UserData.totalSecUntilRestartEcersise=0
-            utils.restart_bound_script()
+        if start.UserData.totalSecUntilRestartExcersise == 5000:    
+            start.UserData.totalSecUntilRestartExcersise=0
+            utils.restart_bound_script_with_logging()
         
         if short_accelerator_value >0.4:
             start.UserData.startExcersice=True
