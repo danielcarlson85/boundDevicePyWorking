@@ -26,7 +26,7 @@ def checkForDeviceMovements():
         short_accelerator_value = float(str(accelerator_value)[:5])
         start.UserData.totalSecUntilRestartExcersise += 1
         
-        if start.UserData.totalSecUntilRestartExcersise == 5000:    
+        if start.UserData.totalSecUntilRestartExcersise >= 5000:    
             start.UserData.totalSecUntilRestartExcersise=0
             utils.restart_bound_script_with_logging()
         
