@@ -108,4 +108,4 @@ if __name__ == "__main__":
         utils.setRedDot()
         exception = str(e)
         utils.logToFile(exception)
-        #utils.restart_device()
+        utils.restart_device()
