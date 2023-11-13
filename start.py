@@ -97,9 +97,9 @@ if __name__ == "__main__":
     conn_str = open("/home/pi/Desktop/BoundDevicePySplit/connectionstring","r").readline()
     try:
         utils.setGreenDot()
-        utils.sendDebugTextToTablet("Starting up device")
+        utils.sendDebugTextToTablet("[Main] Starting up device")
         BoundUI.title("Bound Device")
-        print("Device started")
+        print("[Main] Device started")
         iothubManager.Program.setup(conn_str)
         BoundUI.mainloop()
         input("Press Enter to exit...")
@@ -108,4 +108,4 @@ if __name__ == "__main__":
         utils.setRedDot()
         exception = str(e)
         utils.logToFile(exception)
-        utils.restart_device()
+        #utils.restart_device()

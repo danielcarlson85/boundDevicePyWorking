@@ -132,7 +132,11 @@ def sendDebugTextToTablet(text):
     weight = start.UserData.weight
     print(f"{text}")
     
+    current_datetime=datetime.now()
+    
+    formated_datetime=current_datetime.strftime('%Y-%m-%d %H:%M:%S')
+    
     logToFile(f"sendDebugTextToTablet method started {text}")
     
-    requests.get(f"https://boundhub.azurewebsites.net/send?name={email}&reps={reps}&machinename={machinename}&weight={weight}&status=online&debugText=DEVICE:{text}")
+    requests.get(f"https://boundhub.azurewebsites.net/send?name={email}&reps={reps}&machinename={machinename}&weight={weight}&status=online&debugText={formated_datetime} DEVICE: {text}")
     

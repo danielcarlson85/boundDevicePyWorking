@@ -9,7 +9,7 @@ import json
 class Program:
     def on_message_received(message):
         message = message.data.decode("utf-8")
-        utils.sendDebugTextToTablet("Incomming message: " +message)
+        utils.sendDebugTextToTablet("[on_message_received] Incomming message: " +message)
         result = message.split("****")
         
         if result[0] == "login":
@@ -29,7 +29,8 @@ class Program:
                 start.UserData.startExcersice = False
                 start.UserData.hasDeviceBeenMoved = False
                 training_data = json.dumps(data)
-                Program.send_data_to_iothub(training_data)
+                Program.send_done_data_to_iothub(training_data)
+                
         elif result[0] == "start":
                 utils.sendDebugTextToTablet("[login] Startng excersise")
                 iothubMethods.startnow(result[1])
@@ -48,6 +49,25 @@ class Program:
         print(data_to_send)
         utils.sendDebugTextToTablet("[send_data_to_iothub] DONE, data sent to IoTHub.")
         return
+        
+    @staticmethod
+    def send_done_data_to_iothub(data_to_send):
+        utils.sendDebugTextToTablet("[send_data_to_iothub] Sending data to IoTHub...")
+        start.UserData.startExcersice = True
+        start.UserData.hasDeviceBeenMoved = False
+        message = Message(data_to_send)
+        Program.client.send_message(message)
+        utils.showS()
+        time.sleep(2)
+        utils.setGreenDot()
+        time.sleep(1)
+        print(data_to_send)
+        utils.sendDebugTextToTablet("[send_done_data_to_iothub] DONE, data sent to IoTHub.")
+        utils.restart_bound_script_with_logging()
+
+        return
+        
+        
         
     @staticmethod
     def setup(conn_str):
