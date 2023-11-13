@@ -4,7 +4,7 @@ import json
 import excersiceAlgorithms
     
 def startnow(usertext):
-    print(f"Method started startnow")
+    utils.sendDebugTextToTablet(f"[startnow] Method started startnow")
     user = json.loads(usertext)        
     start.UserData.email = user["Email"]
     start.UserData.machinename=user["DeviceData"]["MachineName"]
@@ -16,4 +16,3 @@ def startnow(usertext):
     start.UserData.data = json.loads(clean_object)
     start.UserData.data['TrainingData'] = []
     excersiceAlgorithms.checkForDeviceMovements()
-    print("Startnow method exited")

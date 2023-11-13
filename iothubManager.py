@@ -9,13 +9,12 @@ import json
 class Program:
     def on_message_received(message):
         message = message.data.decode("utf-8")
-        print("Incomming message: " +message)
         utils.sendDebugTextToTablet("Incomming message: " +message)
         result = message.split("****")
         
         if result[0] == "login":
             utils.setGreenColor()
-            utils.sendDebugTextToTablet("User is logged in")
+            utils.sendDebugTextToTablet("[login] User is logged in")
             
         elif result[0] == "restartRPI":
                 utils.restartRPI()
@@ -24,37 +23,30 @@ class Program:
                 utils.shutdownRPI()
 
         elif result[0] == "restartDevice":
-                print("Restarting device...")
                 utils.restart_bound_script_with_logging()
         elif result[0] == "saveData":
                 data=utils.replace_empty_with_string(start.UserData.data)
                 start.UserData.startExcersice = False
                 start.UserData.hasDeviceBeenMoved = False
-                #print(data)
-                
                 training_data = json.dumps(data)
-                #print(training_data)
                 Program.send_data_to_iothub(training_data)
-        
         elif result[0] == "start":
-                utils.sendDebugTextToTablet("Startng excersise")
+                utils.sendDebugTextToTablet("[login] Startng excersise")
                 iothubMethods.startnow(result[1])
 
     @staticmethod
     def send_data_to_iothub(data_to_send):
-        print("Sending data to IoTHub...")
-        utils.sendDebugTextToTablet("Sending data to IoTHub...")
+        utils.sendDebugTextToTablet("[send_data_to_iothub] Sending data to IoTHub...")
         start.UserData.startExcersice = True
         start.UserData.hasDeviceBeenMoved = False
         message = Message(data_to_send)
         Program.client.send_message(message)
-        print(data_to_send)
         utils.showS()
         time.sleep(2)
         utils.setGreenColor()
         time.sleep(1)
-        print("DONE, data sent to IoTHub.")
-        utils.sendDebugTextToTablet("DONE, data sent to IoTHub.")
+        print(data_to_send)
+        utils.sendDebugTextToTablet("[send_data_to_iothub] DONE, data sent to IoTHub.")
         return
         
     @staticmethod
@@ -63,4 +55,4 @@ class Program:
         Program.client = IoTHubDeviceClient.create_from_connection_string(conn_str)
         Program.client.on_message_received = Program.on_message_received
         Program.client.connect()
-        utils.sendDebugTextToTablet("Device is up and running")
+        utils.sendDebugTextToTablet("[setup] Device is up and running")

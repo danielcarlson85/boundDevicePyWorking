@@ -14,7 +14,7 @@ def stopped(accelerator_value):
     return abs(accelerator_value) < 0.17
 
 def checkForDeviceMovements():
-    utils.sendDebugTextToTablet("CheckForDeviceMovements method started")
+    utils.sendDebugTextToTablet("[checkForDeviceMovements] CheckForDeviceMovements method started")
     utils.show0()
     
     if start.UserData.data == None:
@@ -36,7 +36,7 @@ def checkForDeviceMovements():
     startExercise()
             
 def startExercise():
-    utils.sendDebugTextToTablet("StartExcersice method started")
+    utils.sendDebugTextToTablet("[startExercise] StartExcersice method started")
       
     while start.UserData.startExcersice:
         if start.UserData.reps == 10:

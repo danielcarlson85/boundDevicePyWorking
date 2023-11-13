@@ -58,12 +58,12 @@ def restart_device():
     os.execl(python, python, *sys.argv)
 
 def restart_bound_script_with_logging():
-    sendDebugTextToTablet("Restarting device...")
+    sendDebugTextToTablet("[restart_bound_script_with_logging] Restarting device...")
     restart_device()
     
     
 def restartRPI():
-    print("RPI is restarting...")
+    sendDebugTextToTablet("[restartRPI] RPI is restarting...")
     sense.show_letter("R", text_colour= setredtext())
     time.sleep(2)
     setBlackColor()
@@ -71,7 +71,7 @@ def restartRPI():
 
 
 def shutdownRPI():
-    print("shutting down...")
+    sendDebugTextToTablet("[shutdownRPI] RPIshutting down...")
     sense.show_letter("S", text_colour= setredtext())
     time.sleep(2)
     setBlackColor()
