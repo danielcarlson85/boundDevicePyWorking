@@ -4,7 +4,6 @@ import utils
 import iothubMethods
 import time
 import sys
-import json
 
 class Program:
     def on_message_received(message):
@@ -26,16 +25,7 @@ class Program:
         elif result[0] == "restartDevice":
                 print("Restarting device...")
                 utils.restart_bound_script_with_logging()
-        elif result[0] == "saveData":
-                data=utils.replace_empty_with_string(start.UserData.data)
-                start.UserData.startExcersice = False
-                start.UserData.hasDeviceBeenMoved = False
-                #print(data)
-                
-                training_data = json.dumps(data)
-                #print(training_data)
-                Program.send_data_to_iothub(training_data)
-        
+
         elif result[0] == "start":
                 utils.sendDebugTextToTablet("Startng excersise")
                 iothubMethods.startnow(result[1])
@@ -53,7 +43,6 @@ class Program:
         time.sleep(2)
         utils.setGreenColor()
         time.sleep(1)
-        print("DONE, data sent to IoTHub.")
         utils.sendDebugTextToTablet("DONE, data sent to IoTHub.")
         return
         

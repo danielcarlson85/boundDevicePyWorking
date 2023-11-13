@@ -80,14 +80,16 @@ class UserData:
     exception=""
     isDebug=True
     totalSecUntilRestartExcersise = 0
+    data=None
 
-if __name__ == "__main__":    
+if __name__ == "__main__":     
     
     try:
         utils.checkConnectionToBoundHub()
     except Exception as e:
         utils.setRedDot()
         print("No internet connection...")
+        
         utils.logToFile(str(e))
         utils.restart_device()
     

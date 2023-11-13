@@ -134,4 +134,5 @@ def sendDebugTextToTablet(text):
     
     logToFile(f"sendDebugTextToTablet method started {text}")
     
-    requests.get(f"https://boundhub.azurewebsites.net/send?name={email}&reps={reps}&machinename={machinename}&weight={weight}&status=online&debugText={text}")
+    requests.get(f"https://boundhub.azurewebsites.net/send?name={email}&reps={reps}&machinename={machinename}&weight={weight}&status=online&debugText=DEVICE:{text}")
+    
