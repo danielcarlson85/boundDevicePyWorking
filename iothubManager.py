@@ -25,10 +25,11 @@ class Program:
         elif result[0] == "restartDevice":
                 utils.restart_bound_script_with_logging()
         elif result[0] == "saveData":
+                start.UserData.data['TotalReps'] = start.UserData.totalReps
                 data=utils.replace_empty_with_string(start.UserData.data)
                 start.UserData.startExcersice = False
                 start.UserData.hasDeviceBeenMoved = False
-                training_data = json.dumps(data)
+                training_data = json.dumps(data)                
                 Program.send_done_data_to_iothub(training_data)
                 
         elif result[0] == "start":

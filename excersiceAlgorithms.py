@@ -85,7 +85,8 @@ def startExercise():
             print(short_accelerator_value)
             if start.UserData.totalPause == 100:
                 start.UserData.totalPause = 0
-                training_data = json.dumps(utils.replace_empty_with_string(start.UserData.data))
+                start.UserData.data['TotalReps'] = start.UserData.totalReps
+                training_data = json.dumps(utils.replace_empty_with_string(start.UserData.data))                
                 iothubManager.Program.send_data_to_iothub(training_data)
                 start.UserData.reps=0
                 utils.setBlackColor()
