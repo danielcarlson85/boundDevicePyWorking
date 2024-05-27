@@ -1,6 +1,6 @@
 open a terminal and write:
 
-sudo apt-get update
+sudo apt-get update.
 sudo apt-get upgrade
 sudo apt-get install sense-hat
 pip3 install azure-iot-device
