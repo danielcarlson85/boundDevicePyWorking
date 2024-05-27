@@ -26,6 +26,7 @@ För att få Bound att starta när datorn startas gör detta:
 - sudo nano /home/pi/.config/autostart/bound.config
 
 i filen skriv:
+//
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
@@ -35,7 +36,7 @@ Exec= /usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
 StartupNotify=false
 Terminal=True
 Hidden=false
-
+\\
 
 Se till att start.py ligger i rätt katalog
 starta om datorn för att kolla ifall det funkar
