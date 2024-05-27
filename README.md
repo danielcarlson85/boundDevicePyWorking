@@ -26,19 +26,18 @@ För att få Bound att starta när datorn startas gör detta:
 - sudo nano /home/pi/.config/autostart/bound.config
 
 i filen skriv:
-//
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Name=Bound service
-Comment=
-Exec= /usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
-StartupNotify=false
-Terminal=True
-Hidden=false
-\\
 
-Se till att start.py ligger i rätt katalog
+1. [Desktop Entry]
+2. Encoding=UTF-8
+3. Type=Application
+4. Name=Bound service
+5. Comment=
+6. Exec= /usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
+7. StartupNotify=false
+8. Terminal=True
+9. Hidden=false
+
+Se till att start.py ligger i rätt katalog   dvs:  /home/pi/Desktop/BoundDevicePySplit/start.py
 starta om datorn för att kolla ifall det funkar
 
 
