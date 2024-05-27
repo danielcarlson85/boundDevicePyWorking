@@ -1,17 +1,17 @@
 open a terminal and write:
 
-sudo apt-get update.
-sudo apt-get upgrade
-sudo apt-get install sense-hat
-pip3 install azure-iot-device
-pip3 install requests
-sudo reboot
+- sudo apt-get update
+- sudo apt-get upgrade
+- sudo apt-get install sense-hat
+- pip3 install azure-iot-device
+- pip3 install requests
+- sudo reboot
 
 #För att kunna starta RPI utan skärm inkopplad:
-öppna en terminal och skriv :
-sudo nano /boot/config.txt
+- öppna en terminal och skriv :
+- sudo nano /boot/config.txt
 Gå ner till du ser:
-hdmi_force_hotplug=1
+- hdmi_force_hotplug=1
 ta bort # för att aktivera den raden
 
 
