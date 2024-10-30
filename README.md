@@ -3,6 +3,9 @@ open a terminal and write:
 - sudo apt-get update
 - sudo apt-get upgrade
 - sudo apt-get install sense-hat
+- sudo apt install python3-dev python3-pip libjpeg-dev libtiff5-dev libfreetype6-dev libopenjp2-7 libjpeg62-turbo-dev zlib1g-dev
+- pip3 install --no-cache-dir pillow
+- pip3 install sense-hat
 - pip3 install azure-iot-device
 - pip3 install requests
 - sudo reboot
