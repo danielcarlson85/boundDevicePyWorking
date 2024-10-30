@@ -1,5 +1,14 @@
 open a terminal and write:
 
+skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
+
+install python
+sudo apt install python3-venv
+python3 -m venv myenv
+source myenv/bin/activate
+
+pip install azure-iot-device --break-system-packages
+
 - sudo apt-get update
 - sudo apt-get upgrade
 - sudo apt-get install sense-hat
