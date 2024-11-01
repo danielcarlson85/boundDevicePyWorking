@@ -114,19 +114,12 @@ och att inte .py filerna är öppna i något program, annars kan inte systemctl
 För att få Bound att starta när datorn startas gör detta:
 - öppna en terminal och skriv:
 - mkdir /home/pi/.config/autostart
-- sudo nano /home/pi/.config/autostart/bound.config
-
-i filen skriv:
-
+- nano /home/pi/.config/autostart/clock.desktop
+## i filen skriv:
 1. [Desktop Entry]
-2. Encoding=UTF-8
-3. Type=Application
-4. Name=Bound service
-5. Comment=
-6. Exec= /usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
-7. StartupNotify=false
-8. Terminal=True
-9. Hidden=false
+2. Type=Application
+3. Name=Clock
+4. Exec=/usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
 
 spara med ctrl+x
 
