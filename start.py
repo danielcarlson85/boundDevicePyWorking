@@ -22,8 +22,8 @@
 
 #För att få Bound att starta när datorn startas gör detta:
 #1. öppna en terminal och skriv: (INGET sudo)
-- mkdir /home/pi/.config/autostart
-- nano /home/pi/.config/autostart/clock.desktop
+#- mkdir /home/pi/.config/autostart
+#- nano /home/pi/.config/autostart/clock.desktop
 
 # i filen skriv:
 ## [Desktop Entry]
