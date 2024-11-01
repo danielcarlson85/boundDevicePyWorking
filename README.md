@@ -36,12 +36,41 @@ update RPI linux:
 - cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
 - cd RTEllipsoidFit
 - RTIMULibCal
-  
-installera Azure-
-- pip install azure-iot-device --break-system-packages
 
-- sudo apt-get install sense-hat
-- sudo apt install python3-dev python3-pip libjpeg-dev libtiff5-dev libfreetype6-dev libopenjp2-7 libjpeg62-turbo-dev zlib1g-dev
+# När det är klart startas programmet
+ Options are:
+
+  m - calibrate magnetometer with min/max
+  e - calibrate magnetometer with ellipsoid (do min/max first)
+  a - calibrate accelerometers
+  x - exit
+
+Enter option:
+Press lowercase m. The following message will then show. Press any key to start.
+
+Magnetometer min/max calibration
+-------------------------------
+Waggle the IMU chip around, ensuring that all six axes
+(+x, -x, +y, -y and +z, -z) go through their extrema.
+When all extrema have been achieved, enter 's' to save, 'r' to reset
+or 'x' to abort and discard the data.
+
+Press any key to start...
+After it starts, you should see output similar to the following scrolling up the screen:
+
+Min x:  51.60  min y:  69.39  min z:  65.91
+Max x:  53.15  max y:  70.97  max z:  67.97
+Focus on the two lines at the very bottom of the screen, as these are the most recently posted measurements from the program.
+
+Now, pick up the Raspberry Pi and Sense HAT and move it around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
+
+Try and get a complete circle in each of the pitch, roll and yaw axes.
+
+When you’re done, copy the resulting RTIMULib.ini to /etc/ and remove the local copy in ~/.config/sense_hat/:
+
+
+- rm ~/.config/sense_hat/RTIMULib.ini
+- sudo cp RTIMULib.ini /etc
 
 
 - sudo reboot
