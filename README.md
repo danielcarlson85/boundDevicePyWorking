@@ -1,26 +1,42 @@
 open a terminal and write:
 
+i windows:
 install Raspberry PI OS from Rasperry pi imager
  på RPI 3 - välj RPI 3 32 bit os
 
 https://www.raspberrypi.com/software/
 
-update RPI linux
+Kopiera över boundDevicePyWorking katalogen till boot enheten som finns i utforskaren:
+
+På RPI:
+
+- i /boot/firmware finns boundDevicePyWorking
+- kopiera den till skrivbordet
+
+- Logga in på trådlösanätverket hemma / mobilen
+- Aktivera vnc i inställningar.
+- logga in med RealVNC på ip som 
+update RPI linux:
 - sudo apt update
 - sudo apt upgrade
 
-skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
+#skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
 - sudo apt install python3-venv
 - python3 -m venv myenv
 - source myenv/bin/activate
+- nu ska det li en (myenv) i terminalen
+- pip3 install azure-iot-device
+- sudo apt install sense-hat
 
+
+  
 installera Azure-
-pip install azure-iot-device --break-system-packages
+- pip install azure-iot-device --break-system-packages
 
 - sudo apt-get install sense-hat
 - sudo apt install python3-dev python3-pip libjpeg-dev libtiff5-dev libfreetype6-dev libopenjp2-7 libjpeg62-turbo-dev zlib1g-dev
-- pip3 install sense-hat
-- pip3 install azure-iot-device
+
+
 - sudo reboot
 
 # För att kunna starta RPI utan skärm inkopplad:
