@@ -9,7 +9,8 @@ import json
 import excersiceAlgorithms
 
 sense = SenseHat()
-
+timestart =0
+timeend = 0
 def stopped(accelerator_value):
     return abs(accelerator_value) < 0.17
 
@@ -37,7 +38,8 @@ def checkForDeviceMovements():
             
 def startExercise():
     utils.sendDebugTextToTablet("[startExercise] StartExcersice method started")
-      
+    timestart=int(time.time())
+    timeend=0
     while start.UserData.startExcersice:
         if start.UserData.reps == 10:
             start.UserData.reps = 0
@@ -72,7 +74,9 @@ def startExercise():
                 start.UserData.direction = "down"
             
         if start.UserData.reps >-1:
-            start.UserData.data['TrainingData'].append({'X': start.UserData.totalReps, 'Y': start.UserData.weight, 'Z': int(time.time())})
+            timeend=int(time.time())
+            timeTotal = (timeend-timestart) - 5
+            start.UserData.data['TrainingData'].append({'Reps': start.UserData.totalReps, 'Weight': start.UserData.weight, 'Time': timeTotal})
             
         short_accelerator_value = float(str(accelerator_value)[:5])
 
@@ -88,7 +92,9 @@ def startExercise():
                 start.UserData.data['TotalReps'] = start.UserData.totalReps
                 training_data = json.dumps(utils.replace_empty_with_string(start.UserData.data))                
                 iothubManager.Program.send_data_to_iothub(training_data)
+                start.UserData.totalReps=0
                 start.UserData.reps=0
+                start.UserData.weight=0
                 utils.setBlackColor()
                 start.UserData.startExcersice=False
                 checkForDeviceMovements()
