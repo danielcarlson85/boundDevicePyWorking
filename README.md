@@ -20,12 +20,12 @@ update RPI linux:
 - sudo apt update
 - sudo apt upgrade
 
-#skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
+# (Evskapa en virtuell miljö i boundDeviceWorkingPy katalogen:)
 - sudo apt install python3-venv
 - python3 -m venv myenv
 - source myenv/bin/activate
 - nu ska det li en (myenv) i terminalen
-- pip3 install azure-iot-device
+- pip install azure-iot-device --break-system-packages
 - sudo apt install sense-hat
 
 #  Sense-Hat calibrering:
