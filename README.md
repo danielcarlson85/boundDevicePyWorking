@@ -1,22 +1,25 @@
 open a terminal and write:
 
+install Raspberry PI OS from Rasperry pi imager
+ på RPI 3 - välj RPI 3 32 bit os
+ 
+update RPI linux
+- sudo apt update
+- sudo apt upgrade
+
 skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
-
 install python
-sudo apt install python3-venv
-python3 -m venv myenv
-source myenv/bin/activate
+- sudo apt install python3-venv
+- python3 -m venv myenv
+- source myenv/bin/activate
 
+installera Azure-
 pip install azure-iot-device --break-system-packages
 
-- sudo apt-get update
-- sudo apt-get upgrade
 - sudo apt-get install sense-hat
 - sudo apt install python3-dev python3-pip libjpeg-dev libtiff5-dev libfreetype6-dev libopenjp2-7 libjpeg62-turbo-dev zlib1g-dev
-- pip3 install --no-cache-dir pillow
 - pip3 install sense-hat
 - pip3 install azure-iot-device
-- pip3 install requests
 - sudo reboot
 
 # För att kunna starta RPI utan skärm inkopplad:
