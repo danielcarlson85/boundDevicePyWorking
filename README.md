@@ -38,7 +38,19 @@ update RPI linux:
 - RTIMULibCal
 
 # När det är klart startas programmet
- Options are:
+Calibrate
+Install the necessary software and run the calibration program as follows:
+
+
+sudo apt update
+sudo apt install octave -y
+cd
+cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+cd RTEllipsoidFit
+RTIMULibCal
+The calibration program displays the following menu:
+
+Options are:
 
   m - calibrate magnetometer with min/max
   e - calibrate magnetometer with ellipsoid (do min/max first)
@@ -64,13 +76,16 @@ Focus on the two lines at the very bottom of the screen, as these are the most r
 
 Now, pick up the Raspberry Pi and Sense HAT and move it around in every possible way you can think of. It helps if you unplug all non-essential cables to avoid clutter.
 
-Try and get a complete circle in each of the pitch, roll and yaw axes.
+Try and get a complete circle in each of the pitch, roll and yaw axes. Take care not to accidentally eject the SD card while doing this. Spend a few minutes moving the Sense HAT, and stop when you find that the numbers are not changing any more.
+
+Now press lowercase s then lowercase x to exit the program. If you run the ls command now, you’ll see a new RTIMULib.ini file has been created.
+
+In addition to those steps, you can also do the ellipsoid fit by performing the steps above, but pressing e instead of m.
 
 When you’re done, copy the resulting RTIMULib.ini to /etc/ and remove the local copy in ~/.config/sense_hat/:
 
-
-- rm ~/.config/sense_hat/RTIMULib.ini
-- sudo cp RTIMULib.ini /etc
+rm ~/.config/sense_hat/RTIMULib.ini
+sudo cp RTIMULib.ini /etc
 
 
 - sudo reboot
