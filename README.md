@@ -94,6 +94,7 @@ When you’re done, copy the resulting RTIMULib.ini to /etc/ and remove the loca
 # För att kunna starta RPI utan skärm inkopplad:
 - öppna en terminal och skriv :
 - sudo nano /boot/config.txt
+- EV (/boot/firmware/config.txt)
 - Gå ner till du ser:
 - hdmi_force_hotplug=1
 - ta bort # för att aktivera den raden
@@ -107,6 +108,7 @@ och att inte .py filerna är öppna i något program, annars kan inte systemctl
 
 För att få Bound att starta när datorn startas gör detta:
 - öppna en terminal och skriv:
+- mkdir /home/pi/.config/autostart
 - sudo nano /home/pi/.config/autostart/bound.config
 
 i filen skriv:
@@ -120,6 +122,8 @@ i filen skriv:
 7. StartupNotify=false
 8. Terminal=True
 9. Hidden=false
+
+spara med ctrl+x
 
 Se till att start.py ligger i rätt katalog   dvs:  /home/pi/Desktop/BoundDevicePySplit/start.py
 starta om datorn för att kolla ifall det funkar
