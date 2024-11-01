@@ -2,13 +2,14 @@ open a terminal and write:
 
 install Raspberry PI OS from Rasperry pi imager
  på RPI 3 - välj RPI 3 32 bit os
- 
+
+https://www.raspberrypi.com/software/
+
 update RPI linux
 - sudo apt update
 - sudo apt upgrade
 
 skapa en virtuell miljö i boundDeviceWorkingPy katalogen:
-install python
 - sudo apt install python3-venv
 - python3 -m venv myenv
 - source myenv/bin/activate
