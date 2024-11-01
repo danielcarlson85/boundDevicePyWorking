@@ -20,7 +20,7 @@ update RPI linux:
 - sudo apt update
 - sudo apt upgrade
 
-# (Evskapa en virtuell miljö i boundDeviceWorkingPy katalogen:)
+# (Ev. skapa en virtuell miljö i boundDeviceWorkingPy katalogen:)
 - sudo apt install python3-venv
 - python3 -m venv myenv
 - source myenv/bin/activate
