@@ -42,13 +42,14 @@ Calibrate
 Install the necessary software and run the calibration program as follows:
 
 
-sudo apt update
-sudo apt install octave -y
-cd
-cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
-cd RTEllipsoidFit
-RTIMULibCal
-The calibration program displays the following menu:
+- sudo apt update
+- sudo apt install octave -y
+- cd
+- cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+- cd RTEllipsoidFit
+- RTIMULibCal
+
+#The calibration program displays the following menu:
 
 Options are:
 
@@ -67,7 +68,7 @@ Waggle the IMU chip around, ensuring that all six axes
 When all extrema have been achieved, enter 's' to save, 'r' to reset
 or 'x' to abort and discard the data.
 
-Press any key to start...
+- Press any key to start...
 After it starts, you should see output similar to the following scrolling up the screen:
 
 Min x:  51.60  min y:  69.39  min z:  65.91
@@ -84,8 +85,8 @@ In addition to those steps, you can also do the ellipsoid fit by performing the 
 
 When you’re done, copy the resulting RTIMULib.ini to /etc/ and remove the local copy in ~/.config/sense_hat/:
 
-rm ~/.config/sense_hat/RTIMULib.ini
-sudo cp RTIMULib.ini /etc
+- (rm ~/.config/sense_hat/RTIMULib.ini)
+- sudo cp RTIMULib.ini /etc
 
 
 - sudo reboot
