@@ -94,7 +94,7 @@ if __name__ == "__main__":
         utils.restart_device()
     
     BoundUI=tk.Tk()
-    conn_str = open("connectionstring","r").readline()
+    conn_str = open("/home/pi/Desktop/BoundDevicePySplit/connectionstring","r").readline()
     try:
         utils.setGreenDot()
         utils.sendDebugTextToTablet("[Main] Starting up device")
