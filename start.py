@@ -22,17 +22,14 @@
 
 #För att få Bound att starta när datorn startas gör detta:
 #1. öppna en terminal och skriv: (INGET sudo)
-# nano /home/pi/.config/autostart/bound.desktop
+- mkdir /home/pi/.config/autostart
+- nano /home/pi/.config/autostart/clock.desktop
+
 # i filen skriv:
-#[Desktop Entry]
-#Encoding=UTF-8
-#Type=Application
-#Name=Bound service
-#Comment=
-#Exec= /usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
-#StartupNotify=false
-#Terminal=True
-#Hidden=false
+## [Desktop Entry]
+## Type=Application
+## Name=Clock
+## Exec=/usr/bin/python3 /home/pi/Desktop/BoundDevicePySplit/start.py
 
 
 #Se till att start.py ligger i rätt katalog
