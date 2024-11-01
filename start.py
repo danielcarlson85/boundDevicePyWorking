@@ -21,8 +21,8 @@
 
 
 #För att få Bound att starta när datorn startas gör detta:
-#1. öppna en terminal och skriv:
-# sudo nano /home/pi/.config/autostart/bound.config
+#1. öppna en terminal och skriv: (INGET sudo)
+# nano /home/pi/.config/autostart/bound.desktop
 # i filen skriv:
 #[Desktop Entry]
 #Encoding=UTF-8
