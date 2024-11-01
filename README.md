@@ -1,3 +1,8 @@
+# To create a new device (1 hour from start to finised)
+
+
+
+
 open a terminal and write:
 
 i windows:
