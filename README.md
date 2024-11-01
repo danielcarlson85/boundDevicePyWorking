@@ -28,7 +28,14 @@ update RPI linux:
 - pip3 install azure-iot-device
 - sudo apt install sense-hat
 
+#  Sense-Hat calibrering:
 
+- sudo apt update
+- sudo apt install octave -y
+- cd
+- cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+- cd RTEllipsoidFit
+- RTIMULibCal
   
 installera Azure-
 - pip install azure-iot-device --break-system-packages
